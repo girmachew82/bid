@@ -25,17 +25,17 @@ private int quantity;
 private String itemName;
 private String fromLocation;
 private String toLocation;
-@JsonFormat(pattern="yyyy-MM-dd")
+@JsonFormat(pattern="MM-dd-yyyy")
 private Date orderDate;
-@JsonFormat(pattern="yyyy-MM-dd")
+@JsonFormat(pattern="MM-dd-yyyy")
 private Date expectedDate;
 private int    orderStatus;
 private String orderDescription;
-@ManyToOne(fetch = FetchType.LAZY, optional = false)
+@ManyToOne(fetch = FetchType.LAZY, optional = false) 
 @JsonIgnore
 @JoinColumn(name="customer_id",nullable = false)
 private Customer customer;
-@OneToOne
+@OneToOne(fetch =  FetchType.LAZY)
 private Bidding bidding;
 public int getOrderId() {
         return orderId;
@@ -106,4 +106,22 @@ public Bidding getBidding() {
 public void setBidding(Bidding bidding) {
         this.bidding = bidding;
     }
+    
+public Order() {
+}
+public Order(int orderId, int quantity, String itemName, String fromLocation, String toLocation, Date orderDate,
+        Date expectedDate, int orderStatus, String orderDescription, Customer customer, Bidding bidding) {
+    this.orderId = orderId;
+    this.quantity = quantity;
+    this.itemName = itemName;
+    this.fromLocation = fromLocation;
+    this.toLocation = toLocation;
+    this.orderDate = orderDate;
+    this.expectedDate = expectedDate;
+    this.orderStatus = orderStatus;
+    this.orderDescription = orderDescription;
+    this.customer = customer;
+    this.bidding = bidding;
+}
+    
 }

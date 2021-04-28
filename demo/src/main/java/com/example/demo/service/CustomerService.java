@@ -4,10 +4,14 @@ import java.util.List;
 
 import com.example.demo.model.Customer;
 
+import org.springframework.http.ResponseEntity;
+
 public interface CustomerService {
     List<Customer> getAllCustomers();
-    Customer addCustomer(Customer customer);
+    ResponseEntity<Customer> addCustomer(Customer customer);
    // Customer customerUpdate(int customerId);
-    Customer customerUpdate(Customer customer);
+    Customer customerUpdate(Customer customer, int customerId);
     Customer getCustomerById(int customerId);
+    void deleteCustomerById(int customerId);
+
 }

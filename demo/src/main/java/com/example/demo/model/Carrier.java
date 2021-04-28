@@ -22,7 +22,7 @@ public class Carrier {
     private String lname;
     private String companyName;
     private String email;
-    @OneToMany(mappedBy="carrier", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="carrier", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Bidding> bidding;
     @OneToMany(mappedBy = "carrier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore

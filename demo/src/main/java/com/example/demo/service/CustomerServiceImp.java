@@ -1,14 +1,17 @@
 package com.example.demo.service;
 
+import java.net.URI;
 import java.util.List;
 
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Customer;
 import com.example.demo.repository.CustomerRepository;
 
+import org.dom4j.IllegalAddException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Service
 
@@ -18,9 +21,14 @@ public class CustomerServiceImp implements CustomerService{
      private CustomerRepository customerRepo;
 
      @Override
-     public Customer addCustomer(Customer customer)    
+     public ResponseEntity<Customer> addCustomer(Customer customer)    
      {
-         return customerRepo.save(customer);
+         Customer savedCustomer =this.customerRepo.save(customer);
+        URI location = ServletUriComponentsBuilder
+                        .fromCurrentRequest()
+                        .path("/{id}")
+                        .buildAndExpand(savedCustomer.getCustomerId()).toUri();
+         return ResponseEntity.created(location).build();
         // return customer;
      }
 
@@ -30,13 +38,13 @@ public class CustomerServiceImp implements CustomerService{
          return customerRepo.findAll();
      }
     @Override 
-     public Customer customerUpdate(Customer customer) {
-        //check if the customer with the passed id is exist or not
-
-        Customer customerDB = customerRepo.findById(customer.getCustomerId()).orElseThrow();
-        //If user exist then update
-        //customerRepo.save(customer);       
-        return customerDB;
+     public Customer customerUpdate(Customer customer, int customerId) {
+    boolean exist=  customerRepo.existsById(customerId);
+       if(!exist) {
+        throw new IllegalAddException("Unavailable employee id : " + customerId);
+   }
+    customer = customerRepo.save(customer);
+     return customer;
             }
 
      /*       
@@ -53,13 +61,25 @@ public class CustomerServiceImp implements CustomerService{
     @Override
     public Customer getCustomerById(int customerId)           
      {
-       Customer customer=  customerRepo.findById(customerId).get();
-       if(customer == null) {
-       // throw new ResourceNotFoundException("Invalid employee id : " + customerId, null, null);
+       boolean exist=  customerRepo.existsById(customerId);
+       if(!exist) {
+        throw new IllegalAddException("Unavailable customer id : " + customerId);
    }
+   Customer customer = customerRepo.findById(customerId).get();
      return customer;
      
      }
+
+    @Override
+    public void deleteCustomerById(int customerId) {
+        // TODO Auto-generated method stub
+        boolean exist = customerRepo.existsById(customerId);
+        if(!exist)
+        {
+            throw new IllegalAddException("Unavailable customer id"+ customerId);
+        }
+        customerRepo.deleteById(customerId);
+    }
 
             
 }

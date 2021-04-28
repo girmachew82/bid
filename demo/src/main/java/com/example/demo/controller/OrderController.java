@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-//@RequestMapping("/order")
+@RequestMapping("/order")
 public class OrderController {
 
     @Autowired
@@ -26,19 +26,18 @@ public class OrderController {
     @Autowired
     private CustomerServiceImp customerServiceImp;
 
-
-    @GetMapping("/orders")
+    @GetMapping("/all")
     public List<Order> getAllOrders() {
-        
+
         return orderServiceImp.getAllOrders();
     }
-    
-    //Insert order record
-    @PostMapping("customer/{customerId}/order")
+
+    // Insert order record
+    @PostMapping("/add/customer/{customerId}/order")
     @ResponseStatus(HttpStatus.CREATED)
     public Order addOrder(@RequestBody Order order, @PathVariable("customerId") int customerId) {
-        
+
         return orderServiceImp.addOrder(order, customerId);
 
-}
+    }
 }

@@ -9,6 +9,7 @@ import com.example.demo.service.CustomerServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,33 +27,28 @@ public class CustomerController {
 private CustomerServiceImp customerServiceImp;
 
 //Insert cusomer record
-@PostMapping
+@PostMapping("/add")
 @ResponseStatus(HttpStatus.CREATED)
-public Customer addCustomer(@RequestBody Customer customer)
+public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer)
 {
     return customerServiceImp.addCustomer(customer);
 }
 //Fetch all customer records
-@GetMapping
+@GetMapping("/all")
 public List<Customer> getAllCustomers()
 {
     return customerServiceImp.getAllCustomers();
 }
 
 //Update Customer record
-@PutMapping("/updatecustomer/{customerId}")
-public ResponseEntity <String> customerUpdate(@RequestBody Customer customer)
+@PutMapping("/update/{customerId}")
+public Customer customerUpdate(@RequestBody Customer customer, @PathVariable("customerId") int customerId)
 {
-    try {
-        customerServiceImp.customerUpdate(customer);
-        return new ResponseEntity<String>(HttpStatus.OK);
-    } catch (NoSuchElementException ex) {
-        //TODO: handle exception
-        System.out.println(ex.getMessage());
-        return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-    }
+  return customerServiceImp.customerUpdate(customer, customerId);
 }
    //Update Customer record
+
+/*
 @GetMapping("/updatecustomer/{customerId}")
 public Customer  customerUpdate(@PathVariable ("customerId")  int customerId)
 {
@@ -65,19 +61,20 @@ public Customer  customerUpdate(@PathVariable ("customerId")  int customerId)
         System.out.println(ex.getMessage());
         return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
     }
-    */
+    
     return customerServiceImp.getCustomerById(customerId);
 }
+*/
 //Find by id 
-@GetMapping("/{customerId}")
+@GetMapping("/find/{customerId}")
 public Customer getCustomerById(@PathVariable ("customerId") int customerId)
 {
-    Customer customer = customerServiceImp.getCustomerById(customerId);
-    if(customer == null)
-    {
-      
-    }
     return customerServiceImp.getCustomerById(customerId);
+}
+@DeleteMapping("/delete/{customerId}")
+public ResponseEntity<?> deleteCustomer(@PathVariable("customerId") int customerId) {
+customerServiceImp.deleteCustomerById(customerId);
+    return new ResponseEntity<>(HttpStatus.OK);
 }
 
 }

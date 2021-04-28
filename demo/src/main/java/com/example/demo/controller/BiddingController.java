@@ -21,11 +21,11 @@ public class BiddingController {
     @Autowired
     private BiddingServiceImp biddingServiceImp;
     
-    @PostMapping("carrier/{carrierId}/order/{orderId}")
+    @PostMapping("/add/carrier/{carrierId}/order/{orderId}")
     public Bidding addBidding(@RequestBody Bidding bidding, @PathVariable("carrierId") int carrierId, @PathVariable("orderId") int orderId) {
         return biddingServiceImp.addBidding(bidding, carrierId, orderId);
     }
-    @GetMapping("/biddings")
+    @GetMapping("/add")
     public List<Bidding> getAllBiddings() {
         return biddingServiceImp.getAllBiddings();
      }

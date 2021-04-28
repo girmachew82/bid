@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,7 +27,7 @@ public class Customer {
     private String email;
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Order> orders;
+    private Set<Order> orders = new HashSet<>();
     public String getFname() {
         return fname;
     }
@@ -61,6 +62,22 @@ public class Customer {
         return orders;
     }
     public void setOrders(Set<Order> orders) {
+        
+        this.orders = orders;
+        for(Order o:orders)
+        {
+            o.setCustomer(this);
+        }
+    }
+    public Customer() {
+    }
+
+    public Customer(int customerId, String fname, String mname, String lname, String email, Set<Order> orders) {
+        this.customerId = customerId;
+        this.fname = fname;
+        this.mname = mname;
+        this.lname = lname;
+        this.email = email;
         this.orders = orders;
     }
 
