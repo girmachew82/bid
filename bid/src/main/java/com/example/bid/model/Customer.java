@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,9 +22,13 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
+    @Column(nullable = false, unique = true, length = 45)
     private String fname;
+    @Column(nullable = false, unique = true, length = 45)
     private String mname;
+    @Column(nullable = false, unique = true, length = 45)
     private String lname;
+    @Column(nullable = false, unique = true, length = 45)
     private String email;
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
