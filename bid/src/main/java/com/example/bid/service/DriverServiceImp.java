@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package com.example.bid.service;
 
-import com.example.demo.model.Carrier;
-import com.example.demo.model.Driver;
-import com.example.demo.repository.BiddingRepository;
-import com.example.demo.repository.CarrierRepository;
-import com.example.demo.repository.DriverRepository;
+import com.example.bid.model.Carrier;
+import com.example.bid.model.Driver;
+import com.example.bid.repository.BiddingRepository;
+import com.example.bid.repository.CarrierRepository;
+import com.example.bid.repository.DriverRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

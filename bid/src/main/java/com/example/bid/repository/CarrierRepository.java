@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.example.bid.repository;
 
-import com.example.demo.model.Carrier;
+import com.example.bid.model.Carrier;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
-package com.example.demo.repository;
+package com.example.bid.repository;
 
-import com.example.demo.model.Carrier;
-import com.example.demo.model.Driver;
+import com.example.bid.model.Carrier;
+import com.example.bid.model.Driver;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

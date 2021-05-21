@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch DemoApplication",
+            "request": "launch",
+            "mainClass": "com.example.bid.DemoApplication",
+            "projectName": "demo (2)"
+        },
+        {
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ],
@@ -28,7 +35,6 @@
             "request": "launch",
             "type": "node-terminal"
         },
-
         {
             "type": "java",
             "name": "Launch Current File",

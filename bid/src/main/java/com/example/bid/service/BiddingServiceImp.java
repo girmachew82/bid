@@ -1,16 +1,16 @@
-package com.example.demo.service;
+package com.example.bid.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import com.example.demo.model.Bidding;
-import com.example.demo.model.Carrier;
-import com.example.demo.model.Order;
-import com.example.demo.repository.BiddingRepository;
-import com.example.demo.repository.CarrierRepository;
-import com.example.demo.repository.OrderRepository;
+import com.example.bid.model.Bidding;
+import com.example.bid.model.Carrier;
+import com.example.bid.model.Order;
+import com.example.bid.repository.BiddingRepository;
+import com.example.bid.repository.CarrierRepository;
+import com.example.bid.repository.OrderRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

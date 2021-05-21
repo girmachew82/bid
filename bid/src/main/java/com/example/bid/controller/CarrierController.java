@@ -1,9 +1,9 @@
-package com.example.demo.controller;
+package com.example.bid.controller;
 
 import java.util.List;
 
-import com.example.demo.model.Carrier;
-import com.example.demo.service.CarrierServiceImp;
+import com.example.bid.model.Carrier;
+import com.example.bid.service.CarrierServiceImp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

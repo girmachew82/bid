@@ -1,10 +1,10 @@
-package com.example.demo.repository;
+package com.example.bid.repository;
 
 import java.util.List;
 
-import com.example.demo.model.Bidding;
-import com.example.demo.model.Carrier;
-import com.example.demo.model.Order;
+import com.example.bid.model.Bidding;
+import com.example.bid.model.Carrier;
+import com.example.bid.model.Order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

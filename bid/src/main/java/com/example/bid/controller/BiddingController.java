@@ -1,10 +1,10 @@
-package com.example.demo.controller;
+package com.example.bid.controller;
 
 import java.util.List;
 
-import com.example.demo.model.Bidding;
-import com.example.demo.repository.BiddingRepository;
-import com.example.demo.service.BiddingServiceImp;
+import com.example.bid.model.Bidding;
+import com.example.bid.repository.BiddingRepository;
+import com.example.bid.service.BiddingServiceImp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,11 +1,11 @@
-package com.example.demo.service;
+package com.example.bid.service;
 
 import java.net.URI;
 import java.util.List;
 
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.model.Customer;
-import com.example.demo.repository.CustomerRepository;
+import com.example.bid.exception.ResourceNotFoundException;
+import com.example.bid.model.Customer;
+import com.example.bid.repository.CustomerRepository;
 
 import org.dom4j.IllegalAddException;
 import org.springframework.beans.factory.annotation.Autowired;

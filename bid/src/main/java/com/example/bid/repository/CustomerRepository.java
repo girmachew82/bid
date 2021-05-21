@@ -1,8 +1,8 @@
-package com.example.demo.repository;
+package com.example.bid.repository;
 
 import java.util.Optional;
 
-import com.example.demo.model.Customer;
+import com.example.bid.model.Customer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

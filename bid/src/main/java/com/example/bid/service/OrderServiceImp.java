@@ -1,11 +1,11 @@
-package com.example.demo.service;
+package com.example.bid.service;
 
 import java.util.List;
 
-import com.example.demo.model.Customer;
-import com.example.demo.model.Order;
-import com.example.demo.repository.CustomerRepository;
-import com.example.demo.repository.OrderRepository;
+import com.example.bid.model.Customer;
+import com.example.bid.model.Order;
+import com.example.bid.repository.CustomerRepository;
+import com.example.bid.repository.OrderRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

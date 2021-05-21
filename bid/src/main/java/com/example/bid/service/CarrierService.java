@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.example.bid.service;
 
 import java.util.List;
 
-import com.example.demo.model.Carrier;
+import com.example.bid.model.Carrier;
 
 import org.springframework.http.ResponseEntity;
 

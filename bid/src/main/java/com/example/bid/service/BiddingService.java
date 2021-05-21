@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.example.bid.service;
 
 import java.util.List;
 
-import com.example.demo.model.Bidding;
+import com.example.bid.model.Bidding;
 
 public interface BiddingService {
     Bidding addBidding(Bidding bidding, int carrierId, int orderId);

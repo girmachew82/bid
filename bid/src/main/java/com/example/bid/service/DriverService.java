@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.example.bid.service;
 
-import com.example.demo.model.Driver;
+import com.example.bid.model.Driver;
 
 public interface DriverService {
     Driver addDriver(Driver driver, int carrierId);

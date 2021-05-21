@@ -1,10 +1,10 @@
-package com.example.demo.controller;
+package com.example.bid.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import com.example.demo.model.Customer;
-import com.example.demo.service.CustomerServiceImp;
+import com.example.bid.model.Customer;
+import com.example.bid.service.CustomerServiceImp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

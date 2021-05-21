@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.bid.controller;
 
-import com.example.demo.model.Driver;
-import com.example.demo.service.DriverServiceImp;
+import com.example.bid.model.Driver;
+import com.example.bid.service.DriverServiceImp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

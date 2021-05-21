@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.bid.model;
 import java.util.Set;
 
 import javax.persistence.CascadeType;

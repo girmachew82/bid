@@ -1,4 +1,4 @@
-package com.example.demo.exception;
+package com.example.bid.exception;
 
 import org.springframework.http.ResponseEntity;
 /*
