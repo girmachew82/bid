@@ -17,14 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class DriverController {
     @Autowired
     DriverServiceImp driverServiceImp;
-   
-
- 
-    //Insert Driver record
+     //Insert Driver record
     @PostMapping("carrier/{carrierId}/driver")
     @ResponseStatus(HttpStatus.CREATED)
     public Driver addDriver(@RequestBody Driver driver, @PathVariable("carrierId") int carrierId) {
-        
      return driverServiceImp.addDriver(driver, carrierId);
      //   return driver;
 }

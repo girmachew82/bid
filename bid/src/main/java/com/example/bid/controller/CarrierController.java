@@ -26,8 +26,8 @@ public class CarrierController {
     public Carrier addCarrier(@RequestBody Carrier carrier) {
         return carrierServiceImp.addCarrier(carrier);
     }
-@GetMapping("/all")
-public ResponseEntity<List<Carrier>> getAllCarriers(@RequestBody Carrier carrier) {
-    return carrierServiceImp.getAllCarriers(carrier);
-}
+    @GetMapping("/all")
+    public ResponseEntity<List<Carrier>> getAllCarriers(@RequestBody Carrier carrier) {
+        return carrierServiceImp.getAllCarriers(carrier);
+    }
 }

@@ -29,8 +29,13 @@ public class Customer {
     @Column(nullable = false, unique = true, length = 45)
     private String lname;
     @Column(nullable = false, unique = true, length = 45)
+    private String company;
+    private String address;
+    private String phoneNumber;
     private String email;
+
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
     @JsonIgnore
     private Set<Order> orders = new HashSet<>();
     public String getFname() {
@@ -74,6 +79,25 @@ public class Customer {
             o.setCustomer(this);
         }
     }
+    
+    public String getCompany() {
+        return company;
+    }
+    public void setCompany(String company) {
+        this.company = company;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
     public Customer() {
     }
 
@@ -82,6 +106,18 @@ public class Customer {
         this.fname = fname;
         this.mname = mname;
         this.lname = lname;
+        this.email = email;
+        this.orders = orders;
+    }
+    public Customer(int customerId, String fname, String mname, String lname, String company, String address,
+            String phoneNumber, String email, Set<Order> orders) {
+        this.customerId = customerId;
+        this.fname = fname;
+        this.mname = mname;
+        this.lname = lname;
+        this.company = company;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.orders = orders;
     }
