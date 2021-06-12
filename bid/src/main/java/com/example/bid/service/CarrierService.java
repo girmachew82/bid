@@ -8,5 +8,5 @@ import org.springframework.http.ResponseEntity;
 
 public interface CarrierService {
     Carrier addCarrier(Carrier carrier);
-    ResponseEntity<List<Carrier>> getAllCarriers(Carrier carrier);
+    List<Carrier> getAllCarriers();
 }

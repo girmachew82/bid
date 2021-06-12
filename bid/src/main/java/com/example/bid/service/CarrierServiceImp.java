@@ -19,10 +19,9 @@ public class CarrierServiceImp  implements CarrierService{
         return carrierRepo.save(carrier);
     }
     @Override
-    public ResponseEntity<List<Carrier>> getAllCarriers(Carrier carrier) {
-        // TODO Auto-generated method stub
-        List<Carrier> carriers = carrierRepo.findAll();
-        return new ResponseEntity<>(carriers, HttpStatus.OK);
+    public List<Carrier> getAllCarriers() {
+        
+        return carrierRepo.findAll();
     }
     
 }

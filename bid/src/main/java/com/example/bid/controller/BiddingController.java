@@ -25,7 +25,7 @@ public class BiddingController {
     public Bidding addBidding(@RequestBody Bidding bidding, @PathVariable("carrierId") int carrierId, @PathVariable("orderId") int orderId) {
         return biddingServiceImp.addBidding(bidding, carrierId, orderId);
     }
-    @GetMapping("/add")
+    @GetMapping("/all")
     public List<Bidding> getAllBiddings() {
         return biddingServiceImp.getAllBiddings();
      }
@@ -43,7 +43,7 @@ public class BiddingController {
     public List<Bidding>  getWinner() {
         return biddingServiceImp.getWinner();
     }
-    @PutMapping("/updateStatus/{biddingId}/{status}")
+    @PutMapping("/updateStatus/{biddingId}/{status}/status")
     public int updateStatus(@PathVariable("biddingId") int biddingId, @PathVariable("status") String status) {
         return biddingServiceImp.updateStatus(biddingId,status);
         //return biddingId+status.length();

@@ -32,7 +32,6 @@ public interface BiddingRepository extends JpaRepository<Bidding,Integer>{
     @Query("UPDATE Bidding b SET b.status = :status WHERE b.biddingId = :biddingId")
     public int updatestatusRepo(@Param("biddingId") int biddingId, @Param("status") String status);
     
-    
     @Query(value= "SELECT s FROM Bidding s where status =:status")
     public List<Bidding> showBidByStatusRepo(String status);
 }
