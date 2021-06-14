@@ -58,14 +58,15 @@ public String getStatus() {
 public void setStatus(String status) {
     this.status = status;
 }
+public Bidding() {
+}
+
 public Bidding(int biddingId, String status, float expectedPrice, Carrier carrier, Order order) {
     this.biddingId = biddingId;
     this.status = status;
     this.expectedPrice = expectedPrice;
     this.carrier = carrier;
     this.order = order;
-}
-public Bidding() {
 }
 
 

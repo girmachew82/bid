@@ -8,4 +8,6 @@ import com.example.bid.model.Order;
 public interface OrderService {
     List<Order> getAllOrders();
     Order addOrder(Order order, int customerId);
+    List<Order> getOrderByType(String status);
+    List<Order> getByCustomerId(int customerId);
 }

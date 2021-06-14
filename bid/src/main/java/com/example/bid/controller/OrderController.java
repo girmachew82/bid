@@ -41,4 +41,14 @@ public class OrderController {
        //return order;
 
     }
+
+    @GetMapping("/getByOrderType/{type}")
+    public List<Order> getByOrderType(@PathVariable ("type") String type) {
+        return orderServiceImp.getOrderByType(type);
+     }
+
+     @GetMapping("/getByCustomerId/{customerId}")
+     public List<Order> getByCustomerId(@PathVariable ("customerId") int customerId) {
+         return orderServiceImp.getByCustomerId(customerId);
+      }
 }

@@ -24,10 +24,11 @@ public class Driver {
     private String middleName;
     private String lastName;
     private String phoneNumber;
+    private String status;
     @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade = CascadeType.ALL)
-@JsonIgnore
-@JoinColumn(name="carrier_id",nullable = false)
-    private Carrier carrier;
+    @JsonIgnore
+    @JoinColumn(name="carrier_id",nullable = false)
+        private Carrier carrier;
     public int getDriverId() {
         return driverId;
     }
@@ -62,6 +63,29 @@ public class Driver {
         return carrier;
     }
     public void setCarrier(Carrier carrier) {
+        this.carrier = carrier;
+    }
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    @Override
+    public String toString() {
+        return "Driver [carrier=" + carrier + ", driverId=" + driverId + ", firstName=" + firstName + ", lastName="
+                + lastName + ", middleName=" + middleName + ", phoneNumber=" + phoneNumber + ", status=" + status + "]";
+    }
+    public Driver() {
+    }
+    public Driver(int driverId, String firstName, String middleName, String lastName, String phoneNumber, String status,
+            Carrier carrier) {
+        this.driverId = driverId;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.status = status;
         this.carrier = carrier;
     }
 

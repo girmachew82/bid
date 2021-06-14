@@ -23,5 +23,9 @@ public class CarrierServiceImp  implements CarrierService{
         
         return carrierRepo.findAll();
     }
+    @Override
+    public List<Carrier> getByCarrierId(int carrierId) {
+        return carrierRepo.getByCarrierId(carrierId);
+    }
     
 }

@@ -74,5 +74,9 @@ public class BiddingServiceImp implements BiddingService {
         return biddingRepo.findById(biddingId).get();
         //return biddingId+status.length();
     }
+    @Override
+    public List<Bidding> getByOrderId(int orderId) {
+        return biddingRepo.getByOrderId(orderId);
+    }
 }
 

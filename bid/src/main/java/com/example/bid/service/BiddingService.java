@@ -13,6 +13,6 @@ public interface BiddingService {
     int updateStatus(int biddingId, String response);
     List<Bidding> showBidByStatus(String status);
     Bidding getById(int biddingId);
-    
+    List<Bidding> getByOrderId(int orderId);
 }
 

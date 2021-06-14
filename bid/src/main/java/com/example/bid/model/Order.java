@@ -35,9 +35,12 @@ private Long noofUnitShipping;
 private String typeofUnit;
 private Float weight;
 private Float dimension;
-private int   orderStatus;
+private int   biddingStatus;
 private String hazardousness;
 private String cargonotes;
+private String orderType;
+private String deliveryStatus;
+
 @ManyToOne(fetch = FetchType.LAZY, optional = false) 
 @JsonIgnore
 @JoinColumn(name="customer_id",nullable = false)
@@ -123,12 +126,6 @@ public void setDimension(Float dimension) {
     this.dimension = dimension;
 }
 
-public int getOrderStatus() {
-    return orderStatus;
-}
-public void setOrderStatus(int orderStatus) {
-    this.orderStatus = orderStatus;
-}
 public String getHazardousness() {
     return hazardousness;
 }
@@ -153,12 +150,32 @@ public Bidding getBidding() {
 public void setBidding(Bidding bidding) {
     this.bidding = bidding;
 }
+
+public String getOrderType() {
+    return orderType;
+}
+public void setOrderType(String orderType) {
+    this.orderType = orderType;
+}
+
+public int getBiddingStatus() {
+    return biddingStatus;
+}
+public void setBiddingStatus(int biddingStatus) {
+    this.biddingStatus = biddingStatus;
+}
+public String getDeliveryStatus() {
+    return deliveryStatus;
+}
+public void setDeliveryStatus(String deliveryStatus) {
+    this.deliveryStatus = deliveryStatus;
+}
 public Order() {
 }
 public Order(int orderId, String oLName, String oLpuAddress, String oLzipCode, String oSrtData, String dLName,
         String dLpdAddress, String dLzipCode, String dDnptDate, Long noofUnitShipping, String typeofUnit, Float weight,
-        Float dimension, int orderStatus, String hazardousness, String cargonotes,
-        Customer customer, Bidding bidding) {
+        Float dimension, int biddingStatus, String hazardousness, String cargonotes, String orderType,
+        String deliveryStatus, Customer customer, Bidding bidding) {
     this.orderId = orderId;
     this.oLName = oLName;
     this.oLpuAddress = oLpuAddress;
@@ -172,11 +189,13 @@ public Order(int orderId, String oLName, String oLpuAddress, String oLzipCode, S
     this.typeofUnit = typeofUnit;
     this.weight = weight;
     this.dimension = dimension;
-    this.orderStatus = orderStatus;
+    this.biddingStatus = biddingStatus;
     this.hazardousness = hazardousness;
     this.cargonotes = cargonotes;
+    this.orderType = orderType;
+    this.deliveryStatus = deliveryStatus;
     this.customer = customer;
     this.bidding = bidding;
 }
-    
+
 }

@@ -56,4 +56,8 @@ public class BiddingController {
    public Bidding  getById(@PathVariable("biddingId") int biddingId) {
        return biddingServiceImp.getById(biddingId);
    }
+   @GetMapping("/getByOrderId/{orderId}")
+   public List<Bidding>  getByOrderId(@PathVariable("orderId") int orderId) {
+       return biddingServiceImp.getByOrderId(orderId);
+   }
 }

@@ -25,7 +25,7 @@ public interface BiddingRepository extends JpaRepository<Bidding,Integer>{
     @Query(value= "SELECT min(expectedPrice),biddingId FROM Bidding")
      public  float getMinPrice();
      
-    @Query(value= "SELECT w FROM Bidding w")
+    @Query(value= "SELECT  min(expectedPrice) FROM Bidding w ")
     public List<Bidding> getWinner();
      
     @Modifying(clearAutomatically = true)
@@ -34,4 +34,6 @@ public interface BiddingRepository extends JpaRepository<Bidding,Integer>{
     
     @Query(value= "SELECT s FROM Bidding s where status =:status")
     public List<Bidding> showBidByStatusRepo(String status);
+    @Query(value= "SELECT b FROM Bidding b where order_order_id  =:orderId")
+    public List<Bidding> getByOrderId(int orderId);
 }

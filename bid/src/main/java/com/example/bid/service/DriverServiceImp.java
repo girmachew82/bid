@@ -1,5 +1,7 @@
 package com.example.bid.service;
 
+import java.util.List;
+
 import com.example.bid.model.Carrier;
 import com.example.bid.model.Driver;
 import com.example.bid.repository.BiddingRepository;
@@ -48,4 +50,9 @@ public class DriverServiceImp implements DriverService{
        
     }
     */
+   @Override
+   public List<Driver> getAll() {
+
+      return driverRepo.findAll();
+   }
 }

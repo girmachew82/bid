@@ -11,27 +11,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderServiceImp implements OrderService{
+public class OrderServiceImp implements OrderService {
 
     @Autowired
     private OrderRepository orderRepo;
-    @Autowired 
+    @Autowired
     private CustomerRepository customerRepo;
 
     @Override
     public List<Order> getAllOrders() {
         return orderRepo.findAll();
     }
-    
-    @Override
-    public Order addOrder (Order order, int customerId) {
 
-       return customerRepo.findById(customerId).map(customer ->{
-                  order.setCustomer(customer);
-       return orderRepo.save(order);
-       //return order;
-       }).orElseThrow();
-       
-       
-    } 
+    @Override
+    public Order addOrder(Order order, int customerId) {
+
+        return customerRepo.findById(customerId).map(customer -> {
+            order.setCustomer(customer);
+            return orderRepo.save(order);
+            // return order;
+        }).orElseThrow();
+
+    }
+
+    @Override
+    public List<Order> getOrderByType(String type) {
+        return orderRepo.getByOrderType(type);
+    }
+
+    @Override
+    public List<Order> getByCustomerId(int customerId) {
+        return orderRepo.getByCustomerId(customerId);
+        
+    }
+
 }
+
