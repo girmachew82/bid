@@ -60,4 +60,9 @@ public class BiddingController {
    public List<Bidding>  getByOrderId(@PathVariable("orderId") int orderId) {
        return biddingServiceImp.getByOrderId(orderId);
    }
+   @PutMapping("/assignDriver/{biddingId}/{driverId}/driver")
+   public int assignDriver(@PathVariable("biddingId") int biddingId, @PathVariable("driverId") int driverId) {
+       return biddingServiceImp.updateDriverId(biddingId,driverId);
+       //return biddingId+status.length();
+  }
 }

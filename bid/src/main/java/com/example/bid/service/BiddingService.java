@@ -14,5 +14,7 @@ public interface BiddingService {
     List<Bidding> showBidByStatus(String status);
     Bidding getById(int biddingId);
     List<Bidding> getByOrderId(int orderId);
+    int updateDriverId(int biddingId, int driverId);
+
 }
 

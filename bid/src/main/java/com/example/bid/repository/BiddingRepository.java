@@ -31,6 +31,9 @@ public interface BiddingRepository extends JpaRepository<Bidding,Integer>{
     @Modifying(clearAutomatically = true)
     @Query("UPDATE Bidding b SET b.status = :status WHERE b.biddingId = :biddingId")
     public int updatestatusRepo(@Param("biddingId") int biddingId, @Param("status") String status);
+    @Modifying(clearAutomatically = true)
+    @Query("UPDATE Bidding b SET b.driver_driver_id  = :Driver  WHERE b.biddingId  = :biddingId ")
+    public int updateDriverRepo(@Param("biddingId ") int biddingId , @Param("Driver ") int Driver );
     
     @Query(value= "SELECT s FROM Bidding s where status =:status")
     public List<Bidding> showBidByStatusRepo(String status);

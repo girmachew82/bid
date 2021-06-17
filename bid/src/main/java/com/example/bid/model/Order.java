@@ -25,12 +25,12 @@ private String oLName;
 private String oLpuAddress;
 private String oLzipCode;
 @JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
-private String oSrtData;
+private Date oSrtData;
 private String dLName;
 private String dLpdAddress;
 private String dLzipCode;
 @JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
-private String dDnptDate;
+private Date dDnptDate;
 private Long noofUnitShipping;
 private String typeofUnit;
 private Float weight;
@@ -71,12 +71,7 @@ public String getoLzipCode() {
 public void setoLzipCode(String oLzipCode) {
     this.oLzipCode = oLzipCode;
 }
-public String getoSrtData() {
-    return oSrtData;
-}
-public void setoSrtData(String oSrtData) {
-    this.oSrtData = oSrtData;
-}
+
 public String getdLName() {
     return dLName;
 }
@@ -95,12 +90,7 @@ public String getdLzipCode() {
 public void setdLzipCode(String dLzipCode) {
     this.dLzipCode = dLzipCode;
 }
-public String getdDnptDate() {
-    return dDnptDate;
-}
-public void setdDnptDate(String dDnptDate) {
-    this.dDnptDate = dDnptDate;
-}
+
 public Long getNoofUnitShipping() {
     return noofUnitShipping;
 }
@@ -170,10 +160,22 @@ public String getDeliveryStatus() {
 public void setDeliveryStatus(String deliveryStatus) {
     this.deliveryStatus = deliveryStatus;
 }
+public Date getoSrtData() {
+    return oSrtData;
+}
+public void setoSrtData(Date oSrtData) {
+    this.oSrtData = oSrtData;
+}
+public Date getdDnptDate() {
+    return dDnptDate;
+}
+public void setdDnptDate(Date dDnptDate) {
+    this.dDnptDate = dDnptDate;
+}
 public Order() {
 }
-public Order(int orderId, String oLName, String oLpuAddress, String oLzipCode, String oSrtData, String dLName,
-        String dLpdAddress, String dLzipCode, String dDnptDate, Long noofUnitShipping, String typeofUnit, Float weight,
+public Order(int orderId, String oLName, String oLpuAddress, String oLzipCode, Date oSrtData, String dLName,
+        String dLpdAddress, String dLzipCode, Date dDnptDate, Long noofUnitShipping, String typeofUnit, Float weight,
         Float dimension, int biddingStatus, String hazardousness, String cargonotes, String orderType,
         String deliveryStatus, Customer customer, Bidding bidding) {
     this.orderId = orderId;
