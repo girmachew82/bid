@@ -78,9 +78,11 @@ public class BiddingServiceImp implements BiddingService {
     public List<Bidding> getByOrderId(int orderId) {
         return biddingRepo.getByOrderId(orderId);
     }
+    /*
     @Override
     public int updateDriverId(int biddingId, int driverId) {
         return biddingRepo.updateDriverRepo(biddingId, driverId);
     }
+    */
 }
 

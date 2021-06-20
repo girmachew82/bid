@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,13 +27,11 @@ public class Driver {
     private String lastName;
     private String phoneNumber;
     private String status;
-    @OneToOne(fetch =  FetchType.LAZY)
-    @JsonIgnore
-    private Bidding bidding;
     @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name="carrier_id",nullable = false)
-        private Carrier carrier;
+    private Carrier carrier;
+
     public int getDriverId() {
         return driverId;
     }
@@ -75,27 +74,18 @@ public class Driver {
     public void setStatus(String status) {
         this.status = status;
     }
-    public Bidding getBidding() {
-        return bidding;
-    }
-    public void setBidding(Bidding bidding) {
-        this.bidding = bidding;
-    }
     public Driver() {
     }
     public Driver(int driverId, String firstName, String middleName, String lastName, String phoneNumber, String status,
-            Bidding bidding, Carrier carrier) {
+            Carrier carrier) {
         this.driverId = driverId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.status = status;
-        this.bidding = bidding;
         this.carrier = carrier;
     }
-    
-   
 
-    
+  
 }

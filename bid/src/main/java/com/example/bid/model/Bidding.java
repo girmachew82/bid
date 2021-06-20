@@ -25,6 +25,13 @@ private int biddingId;
 private String status;
 private float expectedPrice;
 @JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
+private Date eTAtoOrigin;
+@JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
+private Date eTAtoDestination;
+private String teamSingle;
+private String unit;
+private String carrieNote;
+@JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
 private Date deliveryDatetime;
 @OneToOne(fetch = FetchType.LAZY)
 @JsonIgnore
@@ -32,9 +39,8 @@ private Carrier carrier;
 @OneToOne(fetch =  FetchType.LAZY)
 @JsonIgnore
 private Order order;
-@OneToOne(fetch =  FetchType.LAZY)
+@OneToOne(fetch = FetchType.LAZY)
 @JsonIgnore
-private Driver Driver;
 
 public int getBiddingId() {
     return biddingId;
@@ -73,24 +79,56 @@ public Date getDeliveryDatetime() {
 public void setDeliveryDatetime(Date deliveryDatetime) {
     this.deliveryDatetime = deliveryDatetime;
 }
-public Driver getDriver() {
-    return Driver;
+
+public Date geteTAtoOrigin() {
+    return eTAtoOrigin;
 }
-public void setDriver(Driver driver) {
-    Driver = driver;
+public void seteTAtoOrigin(Date eTAtoOrigin) {
+    this.eTAtoOrigin = eTAtoOrigin;
 }
+public Date geteTAtoDestination() {
+    return eTAtoDestination;
+}
+public void seteTAtoDestination(Date eTAtoDestination) {
+    this.eTAtoDestination = eTAtoDestination;
+}
+public String getTeamSingle() {
+    return teamSingle;
+}
+public void setTeamSingle(String teamSingle) {
+    this.teamSingle = teamSingle;
+}
+public String getUnit() {
+    return unit;
+}
+public void setUnit(String unit) {
+    this.unit = unit;
+}
+public String getCarrieNote() {
+    return carrieNote;
+}
+public void setCarrieNote(String carrieNote) {
+    this.carrieNote = carrieNote;
+}
+
+
 public Bidding() {
 }
-public Bidding(int biddingId, String status, float expectedPrice, Date deliveryDatetime, Carrier carrier, Order order,
-        com.example.bid.model.Driver driver) {
+public Bidding(int biddingId, String status, float expectedPrice, Date eTAtoOrigin, Date eTAtoDestination,
+        String teamSingle, String unit, String carrieNote, Date deliveryDatetime, Carrier carrier, Order order) {
     this.biddingId = biddingId;
     this.status = status;
     this.expectedPrice = expectedPrice;
+    this.eTAtoOrigin = eTAtoOrigin;
+    this.eTAtoDestination = eTAtoDestination;
+    this.teamSingle = teamSingle;
+    this.unit = unit;
+    this.carrieNote = carrieNote;
     this.deliveryDatetime = deliveryDatetime;
     this.carrier = carrier;
     this.order = order;
-    Driver = driver;
 }
+
 
     
 }

@@ -28,27 +28,24 @@ public class OrderController {
 
     @GetMapping("/all")
     public List<Order> getAllOrders() {
-
         return orderServiceImp.getAllOrders();
     }
-
     // Insert order record
     @PostMapping("/add/customer/{customerId}/order")
     @ResponseStatus(HttpStatus.CREATED)
     public Order addOrder(@RequestBody Order order, @PathVariable("customerId") int customerId) {
 
-       return orderServiceImp.addOrder(order, customerId);
-       //return order;
-
+        return orderServiceImp.addOrder(order, customerId);
+        // return order;
     }
 
     @GetMapping("/getByOrderType/{type}")
-    public List<Order> getByOrderType(@PathVariable ("type") String type) {
+    public List<Order> getByOrderType(@PathVariable("type") String type) {
         return orderServiceImp.getOrderByType(type);
-     }
+    }
 
-     @GetMapping("/getByCustomerId/{customerId}")
-     public List<Order> getByCustomerId(@PathVariable ("customerId") int customerId) {
-         return orderServiceImp.getByCustomerId(customerId);
-      }
+    @GetMapping("/getByCustomerId/{customerId}")
+    public List<Order> getByCustomerId(@PathVariable("customerId") int customerId) {
+        return orderServiceImp.getByCustomerId(customerId);
+    }
 }
