@@ -31,7 +31,8 @@ public class Driver {
     @JsonIgnore
     @JoinColumn(name="carrier_id",nullable = false)
     private Carrier carrier;
-
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private CarrierAssignDriver carrierAssignDriver;
     public int getDriverId() {
         return driverId;
     }
@@ -74,10 +75,17 @@ public class Driver {
     public void setStatus(String status) {
         this.status = status;
     }
+    
+    public CarrierAssignDriver getCarrierAssignDriver() {
+        return carrierAssignDriver;
+    }
+    public void setCarrierAssignDriver(CarrierAssignDriver carrierAssignDriver) {
+        this.carrierAssignDriver = carrierAssignDriver;
+    }
     public Driver() {
     }
     public Driver(int driverId, String firstName, String middleName, String lastName, String phoneNumber, String status,
-            Carrier carrier) {
+            Carrier carrier, CarrierAssignDriver carrierAssignDriver) {
         this.driverId = driverId;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -85,7 +93,7 @@ public class Driver {
         this.phoneNumber = phoneNumber;
         this.status = status;
         this.carrier = carrier;
+        this.carrierAssignDriver = carrierAssignDriver;
     }
-
-  
+   
 }
