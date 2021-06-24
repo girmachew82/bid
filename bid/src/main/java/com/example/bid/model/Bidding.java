@@ -17,129 +17,141 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="Biddings")
+@Table(name = "Biddings")
 public class Bidding {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private int biddingId;
-private String status;
-private float expectedPrice;
-@JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
-private Date eTAtoOrigin;
-@JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
-private Date eTAtoDestination;
-private String teamSingle;
-private String unit;
-private String carrieNote;
-@JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
-private Date deliveryDatetime;
-@OneToMany(mappedBy = "bidding", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-@JsonIgnore
-private Set<Carrier> carrier;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int biddingId;
+    private String status;
+    private float expectedPrice;
+    @JsonFormat(pattern = "MM-dd-yyyy HH:mm:ss")
+    private Date eTAtoOrigin;
+    @JsonFormat(pattern = "MM-dd-yyyy HH:mm:ss")
+    private Date eTAtoDestination;
+    private String teamSingle;
+    private String unit;
+    private String carrieNote;
+    @JsonFormat(pattern = "MM-dd-yyyy HH:mm:ss")
+    private Date deliveryDatetime;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false) 
+    @JsonIgnore
+    private Carrier carrier;
+    /*
+     * @ManyToOne(fetch = FetchType.LAZY)
+     * 
+     * @JsonIgnore private Order order;
+     */
 
-@ManyToOne(fetch =  FetchType.LAZY)
-@JsonIgnore
-private Order order;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false) 
+    @JsonIgnore
+    private Bid bid;
 
-@OneToOne(cascade = CascadeType.ALL, optional = false)
-private Bid bid;
+    public int getBiddingId() {
+        return biddingId;
+    }
 
-public int getBiddingId() {
-    return biddingId;
-}
-public void setBiddingId(int biddingId) {
-    this.biddingId = biddingId;
-}
-public float getExpectedPrice() {
-    return expectedPrice;
-}
-public void setExpectedPrice(float expectedPrice) {
-    this.expectedPrice = expectedPrice;
-}
+    public void setBiddingId(int biddingId) {
+        this.biddingId = biddingId;
+    }
 
+    public float getExpectedPrice() {
+        return expectedPrice;
+    }
 
-public Set<Carrier> getCarrier() {
-    return carrier;
-}
-public void setCarrier(Set<Carrier> carrier) {
-    this.carrier = carrier;
-}
-public Order getOrder() {
-    return order;
-}
-public void setOrder(Order order) {
-    this.order = order;
-}
-public String getStatus() {
-    return status;
-}
-public void setStatus(String status) {
-    this.status = status;
-}
+    public void setExpectedPrice(float expectedPrice) {
+        this.expectedPrice = expectedPrice;
+    }
 
-public Date getDeliveryDatetime() {
-    return deliveryDatetime;
-}
-public void setDeliveryDatetime(Date deliveryDatetime) {
-    this.deliveryDatetime = deliveryDatetime;
-}
+    public Carrier getCarrier() {
+        return carrier;
+    }
 
-public Date geteTAtoOrigin() {
-    return eTAtoOrigin;
-}
-public void seteTAtoOrigin(Date eTAtoOrigin) {
-    this.eTAtoOrigin = eTAtoOrigin;
-}
-public Date geteTAtoDestination() {
-    return eTAtoDestination;
-}
-public void seteTAtoDestination(Date eTAtoDestination) {
-    this.eTAtoDestination = eTAtoDestination;
-}
-public String getTeamSingle() {
-    return teamSingle;
-}
-public void setTeamSingle(String teamSingle) {
-    this.teamSingle = teamSingle;
-}
-public String getUnit() {
-    return unit;
-}
-public void setUnit(String unit) {
-    this.unit = unit;
-}
-public String getCarrieNote() {
-    return carrieNote;
-}
-public void setCarrieNote(String carrieNote) {
-    this.carrieNote = carrieNote;
-}
+    public void setCarrier(Carrier carrier) {
+        this.carrier = carrier;
+    }
 
+    public String getStatus() {
+        return status;
+    }
 
-public Bid getBid() {
-    return bid;
-}
-public void setBid(Bid bid) {
-    this.bid = bid;
-}
-public Bidding() {
-}
-public Bidding(int biddingId, String status, float expectedPrice, Date eTAtoOrigin, Date eTAtoDestination,
-        String teamSingle, String unit, String carrieNote, Date deliveryDatetime, Set<Carrier> carrier, Order order,
-        Bid bid) {
-    this.biddingId = biddingId;
-    this.status = status;
-    this.expectedPrice = expectedPrice;
-    this.eTAtoOrigin = eTAtoOrigin;
-    this.eTAtoDestination = eTAtoDestination;
-    this.teamSingle = teamSingle;
-    this.unit = unit;
-    this.carrieNote = carrieNote;
-    this.deliveryDatetime = deliveryDatetime;
-    this.carrier = carrier;
-    this.order = order;
-    this.bid = bid;
-}
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getDeliveryDatetime() {
+        return deliveryDatetime;
+    }
+
+    public void setDeliveryDatetime(Date deliveryDatetime) {
+        this.deliveryDatetime = deliveryDatetime;
+    }
+
+    public Date geteTAtoOrigin() {
+        return eTAtoOrigin;
+    }
+
+    public void seteTAtoOrigin(Date eTAtoOrigin) {
+        this.eTAtoOrigin = eTAtoOrigin;
+    }
+
+    public Date geteTAtoDestination() {
+        return eTAtoDestination;
+    }
+
+    public void seteTAtoDestination(Date eTAtoDestination) {
+        this.eTAtoDestination = eTAtoDestination;
+    }
+
+    public String getTeamSingle() {
+        return teamSingle;
+    }
+
+    public void setTeamSingle(String teamSingle) {
+        this.teamSingle = teamSingle;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getCarrieNote() {
+        return carrieNote;
+    }
+
+    public void setCarrieNote(String carrieNote) {
+        this.carrieNote = carrieNote;
+    }
+
+    public Bid getBid() {
+        return bid;
+    }
+
+    public void setBid(Bid bid) {
+        this.bid = bid;
+    }
+
+    public Bidding() {
+    }
+
+    public Bidding(int biddingId, String status, float expectedPrice, Date eTAtoOrigin, Date eTAtoDestination,
+            String teamSingle, String unit, String carrieNote, Date deliveryDatetime, Carrier carrier, Bid bid) {
+        this.biddingId = biddingId;
+        this.status = status;
+        this.expectedPrice = expectedPrice;
+        this.eTAtoOrigin = eTAtoOrigin;
+        this.eTAtoDestination = eTAtoDestination;
+        this.teamSingle = teamSingle;
+        this.unit = unit;
+        this.carrieNote = carrieNote;
+        this.deliveryDatetime = deliveryDatetime;
+        this.carrier = carrier;
+        this.bid = bid;
+    }
 
 }

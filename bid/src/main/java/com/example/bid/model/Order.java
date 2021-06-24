@@ -48,8 +48,10 @@ private String deliveryStatus;
 @JsonIgnore
 @JoinColumn(name="customer_id",nullable = false)
 private Customer customer;
+/*
 @OneToMany(mappedBy = "order", fetch =  FetchType.LAZY)
 private Set<Bidding> bidding;
+*/
 @OneToOne(mappedBy = "order")
 private Bid bid;
 public int getOrderId() {
@@ -172,12 +174,6 @@ public void setdDnptDate(Date dDnptDate) {
     this.dDnptDate = dDnptDate;
 }
 
-public Set<Bidding> getBidding() {
-    return bidding;
-}
-public void setBidding(Set<Bidding> bidding) {
-    this.bidding = bidding;
-}
 
 public Bid getBid() {
     return bid;
@@ -190,7 +186,7 @@ public Order() {
 public Order(int orderId, String oLName, String oLpuAddress, String oLzipCode, Date oSrtData, String dLName,
         String dLpdAddress, String dLzipCode, Date dDnptDate, Long noofUnitShipping, String typeofUnit, Float weight,
         Float dimension, int biddingStatus, String hazardousness, String cargonotes, String orderType,
-        String deliveryStatus, Customer customer, Set<Bidding> bidding, Bid bid) {
+        String deliveryStatus, Customer customer, Bid bid) {
     this.orderId = orderId;
     this.oLName = oLName;
     this.oLpuAddress = oLpuAddress;
@@ -210,7 +206,6 @@ public Order(int orderId, String oLName, String oLpuAddress, String oLzipCode, D
     this.orderType = orderType;
     this.deliveryStatus = deliveryStatus;
     this.customer = customer;
-    this.bidding = bidding;
     this.bid = bid;
 }
 

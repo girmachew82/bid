@@ -5,9 +5,11 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import com.example.bid.model.Bid;
 import com.example.bid.model.Bidding;
 import com.example.bid.model.Carrier;
 import com.example.bid.model.Order;
+import com.example.bid.repository.BidRepository;
 import com.example.bid.repository.BiddingRepository;
 import com.example.bid.repository.CarrierRepository;
 import com.example.bid.repository.OrderRepository;
@@ -19,6 +21,9 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class BiddingServiceImp implements BiddingService {
  
+     
+    @Autowired
+    private BidRepository bidRepo;
     @Autowired
     private BiddingRepository biddingRepo;
     @Autowired 
@@ -26,12 +31,12 @@ public class BiddingServiceImp implements BiddingService {
     @Autowired
     private OrderRepository orderRepo;
     
-    public Bidding addBidding(Bidding bidding, int carrierid, int orderid) {
+    public Bidding addBidding(Bidding bidding, int carrierid, int bidid) {
 
-        Order order = biddingRepo.getOrderIdRepo(orderid);
-        bidding.setOrder(order);
+        Bid bid = bidRepo.getBidIdRepo(bidid);
+        bidding.setBid(bid);
         Carrier carrier = biddingRepo.getCarrierIdRepo(carrierid);
-        //bidding.setCarrier(carrier);
+        bidding.setCarrier(carrier);
         return biddingRepo.save(bidding);
        }
     @Override
@@ -74,8 +79,12 @@ public class BiddingServiceImp implements BiddingService {
         //return biddingId+status.length();
     }
     @Override
-    public List<Bidding> getByOrderId(int orderId) {
-        return biddingRepo.getByOrderId(orderId);
+    public List<Bidding> getByBidId(int bidId) {
+        return biddingRepo.getByBidId(bidId);
+    }
+    @Override
+    public List<Carrier> getCarriersByBidId(int bidId) {
+        return biddingRepo.getCarriersByBidId(bidId);
     }
     /*
     @Override

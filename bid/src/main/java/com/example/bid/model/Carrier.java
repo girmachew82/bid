@@ -1,5 +1,6 @@
 package com.example.bid.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -28,81 +29,106 @@ public class Carrier {
     private String dOTNumber;
     private String companyName;
     private String email;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Bidding bidding;
+    @OneToMany(mappedBy = "carrier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Bidding> biddings;
     @OneToMany(mappedBy = "carrier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Driver> driver;
+
     public int getCarrierId() {
         return carrierId;
     }
+
     public void setCarrierId(int carrierId) {
         this.carrierId = carrierId;
     }
+
     public String getFname() {
         return fname;
     }
+
     public void setFname(String fname) {
         this.fname = fname;
     }
+
     public String getMname() {
         return mname;
     }
+
     public void setMname(String mname) {
         this.mname = mname;
     }
+
     public String getLname() {
         return lname;
     }
+
     public void setLname(String lname) {
         this.lname = lname;
     }
+
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
+
     public String getmCNumber() {
         return mCNumber;
     }
+
     public void setmCNumber(String mCNumber) {
         this.mCNumber = mCNumber;
     }
+
     public String getdOTNumber() {
         return dOTNumber;
     }
+
     public void setdOTNumber(String dOTNumber) {
         this.dOTNumber = dOTNumber;
     }
+
     public String getCompanyName() {
         return companyName;
     }
+
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
-     public Set<Driver> getDriver() {
+
+    public Set<Driver> getDriver() {
         return driver;
     }
+
     public void setDriver(Set<Driver> driver) {
         this.driver = driver;
     }
-    public Bidding getBidding() {
-        return bidding;
+
+     public List<Bidding> getBiddings() {
+        return biddings;
     }
-    public void setBidding(Bidding bidding) {
-        this.bidding = bidding;
+
+    public void setBiddings(List<Bidding> biddings) {
+        this.biddings = biddings;
     }
+
     public Carrier() {
     }
+
     public Carrier(int carrierId, String fname, String mname, String lname, String address, String mCNumber,
-            String dOTNumber, String companyName, String email, Bidding bidding, Set<Driver> driver) {
+            String dOTNumber, String companyName, String email, List<Bidding> biddings, Set<Driver> driver) {
         this.carrierId = carrierId;
         this.fname = fname;
         this.mname = mname;
@@ -112,9 +138,8 @@ public class Carrier {
         this.dOTNumber = dOTNumber;
         this.companyName = companyName;
         this.email = email;
-        this.bidding = bidding;
+        this.biddings = biddings;
         this.driver = driver;
     }
-    
-  
+
 }

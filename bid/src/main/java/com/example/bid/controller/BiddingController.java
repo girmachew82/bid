@@ -22,9 +22,9 @@ public class BiddingController {
     @Autowired
     private BiddingServiceImp biddingServiceImp;
     
-    @PostMapping("/add/carrier/{carrierId}/order/{orderId}")
-    public Bidding addBidding(@RequestBody Bidding bidding, @PathVariable("carrierId") int carrierId, @PathVariable("orderId") int orderId) {
-        return biddingServiceImp.addBidding(bidding, carrierId, orderId);
+    @PostMapping("/add/carrier/{carrierId}/bid/{bidid}")
+    public Bidding addBidding(@RequestBody Bidding bidding, @PathVariable("carrierId") int carrierId, @PathVariable("bidid") int bidid) {
+        return biddingServiceImp.addBidding(bidding, carrierId, bidid);
     }
     @GetMapping("/all")
     public List<Bidding> getAllBiddings() {
@@ -57,9 +57,13 @@ public class BiddingController {
    public Bidding  getById(@PathVariable("biddingId") int biddingId) {
        return biddingServiceImp.getById(biddingId);
    }
-   @GetMapping("/getByOrderId/{orderId}")
-   public List<Bidding>  getByOrderId(@PathVariable("orderId") int orderId) {
-       return biddingServiceImp.getByOrderId(orderId);
+   @GetMapping("/getByBidId/{bidId}")
+   public List<Bidding>  getByBidId(@PathVariable("bidId") int bidId) {
+       return biddingServiceImp.getByBidId(bidId);
+   }
+   @GetMapping("/getCarriersByBidId/{bidId}")
+   public List<Carrier>  getCarriersByBidId(@PathVariable("bidId") int bidId) {
+       return biddingServiceImp.getCarriersByBidId(bidId);
    }
    /*
    @GetMapping("/getByBidId/{bidId}")
