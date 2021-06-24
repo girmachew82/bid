@@ -31,8 +31,7 @@ public class BiddingServiceImp implements BiddingService {
         Order order = biddingRepo.getOrderIdRepo(orderid);
         bidding.setOrder(order);
         Carrier carrier = biddingRepo.getCarrierIdRepo(carrierid);
-        bidding.setCarrier(carrier);
-        
+        //bidding.setCarrier(carrier);
         return biddingRepo.save(bidding);
        }
     @Override
@@ -82,6 +81,12 @@ public class BiddingServiceImp implements BiddingService {
     @Override
     public int updateDriverId(int biddingId, int driverId) {
         return biddingRepo.updateDriverRepo(biddingId, driverId);
+    }
+    */
+    /*
+    @Override
+    public List<Bidding> getByBidId(int biddingId2) {
+        return biddingRepo.getByBidId(biddingId2);
     }
     */
 }

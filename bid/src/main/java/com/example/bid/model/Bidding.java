@@ -3,6 +3,7 @@ package com.example.bid.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="Biddings")
-
 public class Bidding {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +34,16 @@ private String unit;
 private String carrieNote;
 @JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")
 private Date deliveryDatetime;
-@OneToOne(fetch = FetchType.LAZY)
+@OneToMany(mappedBy = "bidding", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 @JsonIgnore
-private Carrier carrier;
-@OneToOne(fetch =  FetchType.LAZY)
+private Set<Carrier> carrier;
+
+@ManyToOne(fetch =  FetchType.LAZY)
 @JsonIgnore
 private Order order;
-@OneToOne(fetch = FetchType.LAZY)
-@JsonIgnore
+
+@OneToOne(cascade = CascadeType.ALL, optional = false)
+private Bid bid;
 
 public int getBiddingId() {
     return biddingId;
@@ -54,10 +57,12 @@ public float getExpectedPrice() {
 public void setExpectedPrice(float expectedPrice) {
     this.expectedPrice = expectedPrice;
 }
-public Carrier getCarrier() {
+
+
+public Set<Carrier> getCarrier() {
     return carrier;
 }
-public void setCarrier(Carrier carrier) {
+public void setCarrier(Set<Carrier> carrier) {
     this.carrier = carrier;
 }
 public Order getOrder() {
@@ -112,10 +117,17 @@ public void setCarrieNote(String carrieNote) {
 }
 
 
+public Bid getBid() {
+    return bid;
+}
+public void setBid(Bid bid) {
+    this.bid = bid;
+}
 public Bidding() {
 }
 public Bidding(int biddingId, String status, float expectedPrice, Date eTAtoOrigin, Date eTAtoDestination,
-        String teamSingle, String unit, String carrieNote, Date deliveryDatetime, Carrier carrier, Order order) {
+        String teamSingle, String unit, String carrieNote, Date deliveryDatetime, Set<Carrier> carrier, Order order,
+        Bid bid) {
     this.biddingId = biddingId;
     this.status = status;
     this.expectedPrice = expectedPrice;
@@ -127,8 +139,7 @@ public Bidding(int biddingId, String status, float expectedPrice, Date eTAtoOrig
     this.deliveryDatetime = deliveryDatetime;
     this.carrier = carrier;
     this.order = order;
+    this.bid = bid;
 }
 
-
-    
 }

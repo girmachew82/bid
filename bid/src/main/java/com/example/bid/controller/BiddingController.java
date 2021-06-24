@@ -3,6 +3,7 @@ package com.example.bid.controller;
 import java.util.List;
 
 import com.example.bid.model.Bidding;
+import com.example.bid.model.Carrier;
 import com.example.bid.repository.BiddingRepository;
 import com.example.bid.service.BiddingServiceImp;
 
@@ -60,6 +61,12 @@ public class BiddingController {
    public List<Bidding>  getByOrderId(@PathVariable("orderId") int orderId) {
        return biddingServiceImp.getByOrderId(orderId);
    }
+   /*
+   @GetMapping("/getByBidId/{bidId}")
+   public List<Bidding>  getByBidId(@PathVariable("bidId") int bidId) {
+       return biddingServiceImp.getByBidId(bidId);
+   }
+   */
 /*
    @PutMapping("/assignDriver/{biddingId}/{driverId}/driver")
    public int assignDriver(@PathVariable("biddingId") int biddingId, @PathVariable("driverId") int driverId) {

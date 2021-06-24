@@ -1,7 +1,9 @@
 package com.example.bid.model;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -45,8 +48,10 @@ private String deliveryStatus;
 @JsonIgnore
 @JoinColumn(name="customer_id",nullable = false)
 private Customer customer;
-@OneToOne(fetch =  FetchType.LAZY)
-private Bidding bidding;
+@OneToMany(mappedBy = "order", fetch =  FetchType.LAZY)
+private Set<Bidding> bidding;
+@OneToOne(mappedBy = "order")
+private Bid bid;
 public int getOrderId() {
     return orderId;
 }
@@ -134,12 +139,6 @@ public Customer getCustomer() {
 public void setCustomer(Customer customer) {
     this.customer = customer;
 }
-public Bidding getBidding() {
-    return bidding;
-}
-public void setBidding(Bidding bidding) {
-    this.bidding = bidding;
-}
 
 public String getOrderType() {
     return orderType;
@@ -172,12 +171,26 @@ public Date getdDnptDate() {
 public void setdDnptDate(Date dDnptDate) {
     this.dDnptDate = dDnptDate;
 }
+
+public Set<Bidding> getBidding() {
+    return bidding;
+}
+public void setBidding(Set<Bidding> bidding) {
+    this.bidding = bidding;
+}
+
+public Bid getBid() {
+    return bid;
+}
+public void setBid(Bid bid) {
+    this.bid = bid;
+}
 public Order() {
 }
 public Order(int orderId, String oLName, String oLpuAddress, String oLzipCode, Date oSrtData, String dLName,
         String dLpdAddress, String dLzipCode, Date dDnptDate, Long noofUnitShipping, String typeofUnit, Float weight,
         Float dimension, int biddingStatus, String hazardousness, String cargonotes, String orderType,
-        String deliveryStatus, Customer customer, Bidding bidding) {
+        String deliveryStatus, Customer customer, Set<Bidding> bidding, Bid bid) {
     this.orderId = orderId;
     this.oLName = oLName;
     this.oLpuAddress = oLpuAddress;
@@ -198,6 +211,7 @@ public Order(int orderId, String oLName, String oLpuAddress, String oLzipCode, D
     this.deliveryStatus = deliveryStatus;
     this.customer = customer;
     this.bidding = bidding;
+    this.bid = bid;
 }
 
 }

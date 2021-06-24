@@ -1,6 +1,7 @@
 package com.example.bid.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -35,7 +36,7 @@ public class Customer {
     private String email;
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Order> orders = new HashSet<>();
+    private List<Order> orders;
     public String getFname() {
         return fname;
     }
@@ -66,6 +67,7 @@ public class Customer {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
+    /*
     public Set<Order> getOrders() {
         return orders;
     }
@@ -77,9 +79,16 @@ public class Customer {
             o.setCustomer(this);
         }
     }
+    */
     
     public String getCompany() {
         return company;
+    }
+    public List<Order> getOrders() {
+        return orders;
+    }
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
     public void setCompany(String company) {
         this.company = company;
@@ -98,17 +107,8 @@ public class Customer {
     }
     public Customer() {
     }
-
-    public Customer(int customerId, String fname, String mname, String lname, String email, Set<Order> orders) {
-        this.customerId = customerId;
-        this.fname = fname;
-        this.mname = mname;
-        this.lname = lname;
-        this.email = email;
-        this.orders = orders;
-    }
     public Customer(int customerId, String fname, String mname, String lname, String company, String address,
-            String phoneNumber, String email, Set<Order> orders) {
+            String phoneNumber, List<Order> orders) {
         this.customerId = customerId;
         this.fname = fname;
         this.mname = mname;
@@ -116,8 +116,8 @@ public class Customer {
         this.company = company;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.email = email;
         this.orders = orders;
     }
+
 
 }
