@@ -22,6 +22,7 @@ public class CarrierAssignDriverServiceImp implements CarrierAssignDriverService
     private BiddingRepository biddingRepo;
     @Autowired
     private DriverRepository driverRepo; 
+    
     @Override
     public CarrierAssignDriver assignDriver(CarrierAssignDriver assignDriver, int biddingId, int driverId) {
         
@@ -37,4 +38,8 @@ public class CarrierAssignDriverServiceImp implements CarrierAssignDriverService
         return carrierAssignDriverRepo.findAll();
     }
     
+    @Override
+    public List<Driver> getAssignedDriver(int bidId) {
+        return carrierAssignDriverRepo.getAssignedDriverByBidId(bidId);
+    }
 }

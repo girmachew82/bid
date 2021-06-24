@@ -3,6 +3,7 @@ package com.example.bid.controller;
 import java.util.List;
 
 import com.example.bid.model.CarrierAssignDriver;
+import com.example.bid.model.Driver;
 import com.example.bid.service.CarrierAssignDriverServiceImp;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,9 @@ public class CarrierAssignDriverController {
     @GetMapping("/all")
     public List<CarrierAssignDriver> allAssignedDrivers() {
         return carrierAssignDriverServiceImp.getAllAssignedDrivers();
+    }
+    @GetMapping("/getAssignedDriverByBidId/{bidId}")
+    public List<Driver>  getAssignedDriverByBidId(@PathVariable("bidId") int bidId) {
+        return carrierAssignDriverServiceImp.getAssignedDriver(bidId);
     }
 }
