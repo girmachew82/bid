@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 @Repository
 public interface CarrierAssignDriverRepository extends JpaRepository<CarrierAssignDriver,Integer> {
-    @Query(value = "SELECT c,d FROM CarrierAssignDriver c INNER JOIN Driver d ON c.driver = d.id  where bidding_bidding_id  =:bidId")
+    @Query(value = "SELECT c.driver,c.bidding,d.firstName,d.middleName FROM CarrierAssignDriver c INNER JOIN Driver d ON c.driver = d.driverId  where bidding_bidding_id  =:bidId")
     public List<Driver> getAssignedDriverByBidId(int bidId);
 }
