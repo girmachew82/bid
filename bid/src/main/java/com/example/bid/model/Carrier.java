@@ -30,7 +30,6 @@ public class Carrier {
     private String companyName;
     private String email;
     @OneToMany(mappedBy = "carrier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Bidding> biddings;
     @OneToMany(mappedBy = "carrier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore

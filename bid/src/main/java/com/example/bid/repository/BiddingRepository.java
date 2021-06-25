@@ -46,7 +46,7 @@ public interface BiddingRepository extends JpaRepository<Bidding, Integer> {
     @Query(value = "SELECT b FROM Bidding b  where bid_id  =:bidId")
     public List<Bidding> getByBidId(int bidId);
 //SELECT d.name, e.name, e.email, e.address FROM department d INNER JOIN employee e ON d.id = e.dept_id;
-    @Query(value = "SELECT c,b FROM Bidding b INNER JOIN Carrier c ON b.carrier = c.id  where bid_id  =:bidId")
+    @Query(value = "SELECT c,b.carrier,b.expectedPrice FROM Bidding b INNER JOIN Carrier c ON b.carrier = c.id  where bid_id  =:bidId")
     public List<Carrier> getCarriersByBidId(int bidId);
     //@Query(value = "SELECT c FROM Bidding c where carrier_carrier_id  =:carrierId")
     //SELECT d.name, e.name, e.email, e.address FROM department d INNER JOIN employee e ON d.id = e.dept_id;
