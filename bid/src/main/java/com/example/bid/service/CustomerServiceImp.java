@@ -39,7 +39,7 @@ public class CustomerServiceImp implements CustomerService{
      }
      
      @Override
-     public Object customers()
+     public List<Object> customers()
      {
          return customerRepo.customers();
      }

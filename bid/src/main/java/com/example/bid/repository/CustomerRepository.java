@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
-    @Query("select c.fname,c.mname, c.lname from Customer c")
-    Object customers();
+    @Query("select c.customerId,c.fname,c.mname, c.lname, c.company,c.address,c.phoneNumber,c.email from Customer c")
+    List<Object> customers();
     
 }
