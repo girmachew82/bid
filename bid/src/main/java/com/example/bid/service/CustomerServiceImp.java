@@ -37,6 +37,12 @@ public class CustomerServiceImp implements CustomerService{
      {
          return customerRepo.findAll();
      }
+     
+     @Override
+     public Object customers()
+     {
+         return customerRepo.customers();
+     }
     @Override 
      public Customer customerUpdate(Customer customer, int customerId) {
     boolean exist=  customerRepo.existsById(customerId);

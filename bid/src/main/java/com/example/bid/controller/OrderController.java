@@ -48,4 +48,8 @@ public class OrderController {
     public List<Order> getByCustomerId(@PathVariable("customerId") int customerId) {
         return orderServiceImp.getByCustomerId(customerId);
     }
+    @GetMapping("/getById/{orderId}")
+    public Order getById(@PathVariable("orderId") int orderId) {
+        return orderServiceImp.getById(orderId);
+    }
 }

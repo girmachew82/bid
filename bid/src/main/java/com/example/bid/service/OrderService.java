@@ -10,4 +10,6 @@ public interface OrderService {
     Order addOrder(Order order, int customerId);
     List<Order> getOrderByType(String status);
     List<Order> getByCustomerId(int customerId);
+    Order getById(int orderId);
+
 }

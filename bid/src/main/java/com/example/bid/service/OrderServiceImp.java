@@ -7,6 +7,7 @@ import com.example.bid.model.Order;
 import com.example.bid.repository.CustomerRepository;
 import com.example.bid.repository.OrderRepository;
 
+import org.dom4j.IllegalAddException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,14 @@ public class OrderServiceImp implements OrderService {
         return orderRepo.getByCustomerId(customerId);
         
     }
-
+    @Override
+    public Order getById(int orderId) {
+        boolean exist=  orderRepo.existsById(orderId);
+        if(!exist) {
+         throw new IllegalAddException("Unavailable Order id : " + orderId);
+    }
+    Order order = orderRepo.findById(orderId).get();
+      return order;
+    }
 }
 

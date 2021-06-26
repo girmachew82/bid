@@ -40,6 +40,11 @@ public List<Customer> getAllCustomers()
     return customerServiceImp.getAllCustomers();
 }
 
+@GetMapping("/allCustomers")
+public Object Customers()
+{
+    return customerServiceImp.customers();
+}
 //Update Customer record
 @PutMapping("/update/{customerId}")
 public Customer customerUpdate(@RequestBody Customer customer, @PathVariable("customerId") int customerId)
