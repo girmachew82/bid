@@ -83,8 +83,12 @@ public class BiddingServiceImp implements BiddingService {
         return biddingRepo.getByBidId(bidId);
     }
     @Override
-    public List<Carrier> getCarriersByBidId(int bidId) {
+    public List<Object> getCarriersByBidId(int bidId) {
         return biddingRepo.getCarriersByBidId(bidId);
+    }
+    @Override
+    public List<Object> findByBidId(int bidId) {
+        return biddingRepo.findByBidId(bidId);
     }
     /*
     @Override

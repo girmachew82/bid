@@ -2,6 +2,7 @@ package com.example.bid.controller;
 
 import java.util.List;
 
+import com.example.bid.model.Bidding;
 import com.example.bid.model.Carrier;
 import com.example.bid.service.CarrierServiceImp;
 
@@ -35,4 +36,8 @@ public class CarrierController {
     public List<Carrier> getByCarrierId(@PathVariable("carrierId")int carrierId) {
         return carrierServiceImp.getByCarrierId(carrierId);
     }
+    @GetMapping("/showByStatusNCarrierId/status/{status}/carrierId/{carrierId}")
+    public List<Object>  showByStatusNCarrierId(@PathVariable("status") String status,@PathVariable("carrierId") int carrierId) {
+        return carrierServiceImp.showBidByStatusNCarrierId(status,carrierId);
+      }
 }

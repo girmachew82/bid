@@ -53,6 +53,7 @@ public class BiddingController {
    public List<Bidding>  showByStatus(@PathVariable("status") String status) {
        return biddingServiceImp.showBidByStatus(status);
    }
+  
    @GetMapping("/getById/{biddingId}")
    public Bidding  getById(@PathVariable("biddingId") int biddingId) {
        return biddingServiceImp.getById(biddingId);
@@ -62,8 +63,12 @@ public class BiddingController {
        return biddingServiceImp.getByBidId(bidId);
    }
    @GetMapping("/getCarriersByBidId/{bidId}")
-   public List<Carrier>  getCarriersByBidId(@PathVariable("bidId") int bidId) {
+   public List<Object>  getCarriersByBidId(@PathVariable("bidId") int bidId) {
        return biddingServiceImp.getCarriersByBidId(bidId);
+   }
+   @GetMapping("/findByBidId/{bidId}")
+   public List<Object>  findByBidId(@PathVariable("bidId") int bidId) {
+       return biddingServiceImp.findByBidId(bidId);
    }
    /*
    @GetMapping("/getByBidId/{bidId}")

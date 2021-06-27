@@ -42,14 +42,16 @@ public interface BiddingRepository extends JpaRepository<Bidding, Integer> {
 */
     @Query(value = "SELECT s FROM Bidding s where status =:status")
     public List<Bidding> showBidByStatusRepo(String status);
-
     @Query(value = "SELECT b FROM Bidding b  where bid_id  =:bidId")
     public List<Bidding> getByBidId(int bidId);
 //SELECT d.name, e.name, e.email, e.address FROM department d INNER JOIN employee e ON d.id = e.dept_id;
-    @Query(value = "SELECT c,b.carrier,b.expectedPrice FROM Bidding b INNER JOIN Carrier c ON b.carrier = c.id  where bid_id  =:bidId")
-    public List<Carrier> getCarriersByBidId(int bidId);
+    @Modifying
+    @Query(value = "SELECT  `carriers`.`carrier_id`,`carriers`.`fname`,`carriers`.`mname`,`carriers`.`lname`,`carriers`.`address`,`carriers`.`email`,`carriers`.`company_name`,`biddings`.`bidding_id`,`biddings`.`carrie_note`,`biddings`.`delivery_datetime`,`biddings`.`etato_destination`,`biddings`.`etato_origin`,`biddings`.`expected_price`,`biddings`.`status`,`biddings`.`team_single`,`biddings`.`unit` FROM `biddings`  INNER JOIN `carriers` ON `carriers`.`carrier_id` = `biddings`.`carrier_carrier_id` WHERE `biddings`.`bid_id`=:bidId", nativeQuery=true)
+    public List<Object> getCarriersByBidId(@Param("bidId") int bidId);
     //@Query(value = "SELECT c FROM Bidding c where carrier_carrier_id  =:carrierId")
     //SELECT d.name, e.name, e.email, e.address FROM department d INNER JOIN employee e ON d.id = e.dept_id;
    // @Query(value = "SELECT b.carrier_carrier_id, c.mCNumber FROM Biddings b INNER JOIN Carriers c ON c.carrier_id = b.carrier_carrier_id")
     //public List<Bidding> getByBidId(int orderId);
+    List<Object> findByStatusAndCarrier(String status, int carrier);
+    List<Object> findByBidId(int bidId);
 }
