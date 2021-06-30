@@ -46,7 +46,7 @@ public class Order {
     private String orderType;
     private String deliveryStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false,  cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;

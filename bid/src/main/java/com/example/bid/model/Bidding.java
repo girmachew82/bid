@@ -35,7 +35,7 @@ public class Bidding {
     private String carrieNote;
     @JsonFormat(pattern = "MM-dd-yyyy HH:mm:ss")
     private Date deliveryDatetime;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false) 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false,  cascade = CascadeType.ALL) 
     @JsonIgnore
     private Carrier carrier;
     /*

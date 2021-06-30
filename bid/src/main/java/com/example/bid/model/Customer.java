@@ -34,7 +34,7 @@ public class Customer {
     private String address;
     private String phoneNumber;
     private String email;
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer")
     private List<Order> orders;
     public String getFname() {
         return fname;

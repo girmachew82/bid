@@ -29,9 +29,9 @@ public class Carrier {
     private String dOTNumber;
     private String companyName;
     private String email;
-    @OneToMany(mappedBy = "carrier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "carrier")
     private List<Bidding> biddings;
-    @OneToMany(mappedBy = "carrier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "carrier")
     @JsonIgnore
     private Set<Driver> driver;
 

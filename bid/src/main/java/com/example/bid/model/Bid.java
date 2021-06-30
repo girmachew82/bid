@@ -22,7 +22,6 @@ public class Bid {
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     private Order order;
     @OneToMany(mappedBy = "bid",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<Bidding> bidding;
     public int getId() {
         return id;
